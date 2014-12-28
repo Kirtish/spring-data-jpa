@@ -1,4 +1,4 @@
-package com.rsoft.app.web.controllers;
+package com.rsoft.app.rest;
 
 import java.util.List;
 
