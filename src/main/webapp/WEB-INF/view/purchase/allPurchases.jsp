@@ -10,22 +10,25 @@
 <jsp:include page="../layout/header.jsp"/>
 	<table class="table table-striped table-bordered" cellspacing="0" >
 	<tr>
-		<a class="btn btn-default" href=" ${pageContext.request.contextPath}/roles/new" role="button">Add Role</a>		 
+		<a class="btn btn-default" href=" ${pageContext.request.contextPath}/purchase/new" role="button">Add Company</a>		 
 	</tr>
 	<tr>
 		<td>#</td>
-		<td>Code</td>
-		<td>Description</td>
+		<td>Purchased From</td>
+		<td>Purchase Date</td>
+		<td>Purchase Amount</td>
+		<td>Purchase Comments</td>
 		<td></td>
 	</tr>
-	<c:forEach items="${roles}" var="role">
+	<c:forEach items="${purchases}" var="purchase">
 	   <tr>
-	    <td>  <c:url var="editUrl" value="../roles/${role.id}/edit"/>
-		   ${role.id}</td>
-	   	<td>${role.code}</td>
-	   	<td>${role.descr}</td>
+	    <td>  <c:url var="editUrl" value="../purchase/edit/${purchase.id}"/>
+		   ${purchase.purchasedFrom}</td>
+	   	<td>${purchase.purchaseDate}</td>
+	   	<td>${purchase.purchaseValue}</td>
+	   	<td>${purchase.comments}</td>
 		<td><a class="glyphicon glyphicon-pencil" href='<c:out value="${editUrl}"/>' role="button"></a> 
-		<a class="glyphicon glyphicon-trash" href='<c:out value="../roles/delete/${role.id}"/>' role="button"></a></td>
+		<a class="glyphicon glyphicon-trash" href='<c:out value="../purchase/delete/${purchase.id}"/>' role="button"></a></td>
 	   </tr>
 	</c:forEach>
 	</table>

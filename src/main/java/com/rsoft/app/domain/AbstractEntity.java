@@ -16,13 +16,13 @@ public class AbstractEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Timestamp lastUpdatedtm;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Long lastUpdatedBy;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private boolean deleted;
 
 	public Long getId() {

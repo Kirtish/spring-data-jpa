@@ -7,5 +7,5 @@ import com.rsoft.app.domain.User;
 
 public interface UserRepository extends CrudRepository<User, Long>{
 
-	public User findByLoginIdAndPwd(String loginId,String pwd);
+	public User findByEmail(String email);
 }

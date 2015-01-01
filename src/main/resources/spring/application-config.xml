@@ -8,51 +8,15 @@
 		 http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd 
 		 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
+	<import resource="spring-persistence.xml" />
+	<import resource="spring-security.xml" />
+	<import resource="spring-social.xml" />
 
 	<context:component-scan base-package="com.rsoft.app.services" />
-	<jpa:repositories base-package="com.rsoft.app.repositories" />
-
-	<context:property-placeholder location="classpath:jdbc.properties" />
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver-class-name}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+	<context:component-scan base-package="com.rsoft.app.model" />
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
 	</bean>
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean id="jpaVendorAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<property name="showSql" value="true" />
-		<property name="database" value="HSQL" />
-		<property name="generateDdl" value="true" />
-		<property name="databasePlatform" value="${hibernate.dialect}"></property>
-	</bean>
-
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<!-- spring based scanning for entity classes> -->
-		<property name="packagesToScan" value="com.rsoft.app.domain" />
-	</bean>
-
-	<!-- Enables the Hibernate @Transactional programming model -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-
-
- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
-	
-
 </beans>

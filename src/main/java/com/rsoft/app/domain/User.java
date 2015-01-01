@@ -2,7 +2,8 @@ package com.rsoft.app.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class User extends AbstractEntity {
@@ -39,21 +40,40 @@ public class User extends AbstractEntity {
 		this.loginId = loginId;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public Role getRole() {
+	public SocialRole getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(SocialRole role) {
 		this.role = role;
 	}
+
+	public SocialMediaService getSignInProvider() {
+		return signInProvider;
+	}
+
+	public void setSignInProvider(SocialMediaService signInProvider) {
+		this.signInProvider = signInProvider;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(nullable = false)
+	private String email;
 
 	@Column(nullable = false)
 	private String firstName;
@@ -63,13 +83,17 @@ public class User extends AbstractEntity {
 	@Column(nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
 	private String loginId;
 
 	@Column(nullable = false)
-	private String pwd;
+	private String password;
 
-	@ManyToOne
-	private Role role;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role", length = 20, nullable = false)
+	private SocialRole role;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "sign_in_provider", length = 20)
+	private SocialMediaService signInProvider;
 
 }
