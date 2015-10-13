@@ -10,7 +10,7 @@
 <jsp:include page="../layout/header.jsp"/>
 	<table class="table table-striped table-bordered" cellspacing="0" >
 	<tr>
-		<a class="btn btn-default" href=" ${pageContext.request.contextPath}/purchase/new" role="button">Add Company</a>		 
+		<a class="btn btn-default" href=" ${pageContext.request.contextPath}/purchases/new" role="button">Add Purchase</a>		 
 	</tr>
 	<tr>
 		<td>#</td>
@@ -22,13 +22,13 @@
 	</tr>
 	<c:forEach items="${purchases}" var="purchase">
 	   <tr>
-	    <td>  <c:url var="editUrl" value="../purchase/edit/${purchase.id}"/>
+	    <td>  <c:url var="editUrl" value="../purchases/edit/${purchase.id}"/>
 		   ${purchase.purchasedFrom}</td>
 	   	<td>${purchase.purchaseDate}</td>
 	   	<td>${purchase.purchaseValue}</td>
 	   	<td>${purchase.comments}</td>
 		<td><a class="glyphicon glyphicon-pencil" href='<c:out value="${editUrl}"/>' role="button"></a> 
-		<a class="glyphicon glyphicon-trash" href='<c:out value="../purchase/delete/${purchase.id}"/>' role="button"></a></td>
+		<a class="glyphicon glyphicon-trash" href='<c:out value="../purchases/delete/${purchase.id}"/>' role="button"></a></td>
 	   </tr>
 	</c:forEach>
 	</table>

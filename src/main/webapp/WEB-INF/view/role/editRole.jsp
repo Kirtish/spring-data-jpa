@@ -10,7 +10,7 @@
 <div class="container">
 <jsp:include page="../layout/header.jsp"/>
 <h2>Edit Role</h2>
-	 <form:form modelAttribute="role" method="put">
+	 <form:form modelAttribute="role" method="post">
    <table>
     <tr>
         <td><form:label path="code">Code</form:label></td>

@@ -20,7 +20,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="${pageContext.request.contextPath}/roles/">Roles</a></li>
-            <!--   <li><a href="${pageContext.request.contextPath}/users/">Users</a></li> -->
+             <li><a href="${pageContext.request.contextPath}/users/">Users</a></li>
             <li><a href="${pageContext.request.contextPath}/company/">Companies</a></li>
             <li><a href="${pageContext.request.contextPath}/products/">Products</a></li>
           </ul>
